@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>HrlyQnn</title>
+</head>
+<body>
+    <canvas id="aurora-canvas"></canvas>
+
+    <header>
+        <a href="#" class="logo">Harley</a>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Skills</a>
+            <a href="#">Education</a>
+            <a href="#">Experience</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-img">
+            <img src="main.jpg" id="profile-pic">
+            <div class="tech-icons">
+                <a href="#" title="HTML5"><i class="fa-brands fa-html5"></i></a>
+                <a href="#" title="CSS3"><i class="fa-brands fa-css3-alt"></i></a>
+                <a href="#" title="JavaScript"><i class="fa-brands fa-js"></i></a>
+                <a href="#" title="PHP"><i class="fa-brands fa-php"></i></a>
+                <a href="#" title="Figma"><i class="fa-brands fa-figma"></i></a>
+                <a href="#" title="WordPress"><i class="fa-brands fa-wordpress"></i></a>
+                <a href="#" title="Adobe Premiere Pro"><span class="icon-text">Pr</span></a>
+                <a href="#" title="Stitch"><span class="icon-text">St</span></a>
+                <a href="#" title="MyRealPage"><span class="icon-text">MRP</span></a>
+            </div>
+        </div>
+        <div class="home-content">
+            <h1>Hi, It's <span>Harley</span></h1>
+            <h3 class="typing-text"><span id="im-a">I'm a </span><span></span></h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="#" class="btn">Hire me</a>
+        </div>
+    </section>
+
+    <button id="theme-toggle" title="Toggle Light/Dark Mode">
+        <i class="fa-solid fa-sun"></i>
+    </button>
+
+    <script>
+        // Aurora background
+        const canvas = document.getElementById('aurora-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const waves = [
+            { y: 0.35, color: '#5227FF', speed: 0.00001, amp: 120, freq: 0.0018 },
+            { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
+            { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
+            { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
+        ];
+
+        let auroraTime = 0;
+
+        function drawAurora() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (document.body.classList.contains('light-mode')) {
+                requestAnimationFrame(drawAurora);
+                return;
+            }
+
+            waves.forEach(wave => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'transparent');
+                gradient.addColorStop(0.3, wave.color + '55');
+                gradient.addColorStop(0.6, wave.color + '22');
+                gradient.addColorStop(1, 'transparent');
+
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height);
+
+                for (let x = 0; x <= canvas.width; x += 5) {
+                    const y = wave.y * canvas.height
+                        + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
+                        + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.closePath();
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            });
+
+            auroraTime++;
+            requestAnimationFrame(drawAurora);
+        }
+
+        drawAurora();
+
+        // Image swap
+        const pic = document.getElementById('profile-pic');
+        const typingSpan = document.querySelectorAll('.typing-text span')[1];
+        const words = ["Mobile App Designer", "Frontend Developer", "Web Designer", "Video Editor"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+        let typeTimeout = null;
+        const imA = document.getElementById('im-a');
+
+        pic.addEventListener('mouseenter', () => {
+            pic.src = 'main1.png';
+            isPaused = true;
+            clearTimeout(typeTimeout);
+            imA.style.display = 'none';
+            typingSpan.textContent = 'I Miss You :<';
+        });
+
+        pic.addEventListener('mouseleave', () => {
+            pic.src = 'main.jpg';
+            imA.style.display = 'inline';
+            isPaused = false;
+            isDeleting = false;
+            charIndex = 0;
+            typingSpan.textContent = '';
+            clearTimeout(typeTimeout);
+            typeTimeout = setTimeout(type, 400);
+        });
+
+        // Navbar scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Light/Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Typewriter effect
+        function type() {
+            if (isPaused) return;
+
+            const currentWord = words[wordIndex];
+
+            if (isDeleting) {
+                typingSpan.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingSpan.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 80 : 120;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                speed = 2500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                speed = 400;
+            }
+
+            typeTimeout = setTimeout(type, speed);
+        }
+
+        type();
+    </script>
+</body>
+</html>
