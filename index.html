@@ -15,9 +15,9 @@
         <a href="#" class="logo">Harley</a>
         <nav>
             <a href="#" class="active">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Skills</a>
-            <a href="#">Education</a>
+            <a href="about.html">About</a>
+            <a href="resume.html">Resume</a>
+            <a href="services.html">Projects</a>
             <a href="#">Experience</a>
             <a href="#">Contact</a>
         </nav>
@@ -79,39 +79,52 @@
         let auroraTime = 0;
 
         function drawAurora() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            if (document.body.classList.contains('light-mode')) {
-                requestAnimationFrame(drawAurora);
-                return;
-            }
+    const isLight = document.body.classList.contains('light-mode');
 
-            waves.forEach(wave => {
-                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                gradient.addColorStop(0, 'transparent');
-                gradient.addColorStop(0.3, wave.color + '55');
-                gradient.addColorStop(0.6, wave.color + '22');
-                gradient.addColorStop(1, 'transparent');
+    const darkWaves = [
+        { y: 0.35, color: '#5227FF', speed: 0.00001,  amp: 120, freq: 0.0018 },
+        { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
+        { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
+        { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
+    ];
 
-                ctx.beginPath();
-                ctx.moveTo(0, canvas.height);
+    const lightWaves = [
+        { y: 0.35, color: '#888888', speed: 0.00001,  amp: 120, freq: 0.0018 },
+        { y: 0.45, color: '#aaaaaa', speed: 0.00001, amp: 100, freq: 0.0022 },
+        { y: 0.40, color: '#666666', speed: 0.00001, amp: 140, freq: 0.0015 },
+        { y: 0.50, color: '#999999', speed: 0.00001, amp: 90,  freq: 0.0020 },
+    ];
 
-                for (let x = 0; x <= canvas.width; x += 5) {
-                    const y = wave.y * canvas.height
-                        + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
-                        + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
-                    ctx.lineTo(x, y);
-                }
+    const waves = isLight ? lightWaves : darkWaves;
 
-                ctx.lineTo(canvas.width, canvas.height);
-                ctx.closePath();
-                ctx.fillStyle = gradient;
-                ctx.fill();
-            });
+    waves.forEach(wave => {
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, 'transparent');
+        gradient.addColorStop(0.3, wave.color + '55');
+        gradient.addColorStop(0.6, wave.color + '22');
+        gradient.addColorStop(1, 'transparent');
 
-            auroraTime++;
-            requestAnimationFrame(drawAurora);
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height);
+
+        for (let x = 0; x <= canvas.width; x += 5) {
+            const y = wave.y * canvas.height
+                + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
+                + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
+            ctx.lineTo(x, y);
         }
+
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.closePath();
+        ctx.fillStyle = gradient;
+        ctx.fill();
+    });
+
+    auroraTime++;
+    requestAnimationFrame(drawAurora);
+}
 
         drawAurora();
 
@@ -155,15 +168,23 @@
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = themeToggle.querySelector('i');
 
+        // Load saved theme on page load
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
-
             if (document.body.classList.contains('light-mode')) {
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
             } else {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
             }
         });
 
@@ -196,6 +217,8 @@
         }
 
         type();
+
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="services.css">
+    <title>Services - HrlyQnn</title>
+</head>
+<body>
+    <div class="page-wrapper">
+        <canvas id="aurora-canvas"></canvas>
+
+        <header>
+            <a href="index.html" class="logo">Harley</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="services.html" class="active">Projects</a>
+                <a href="#">Experience</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <section class="services">
+            <h2 class="services-title">My <span>Services</span></h2>
+            <p class="services-subtitle">What I can do for you</p>
+
+            <div class="services-list">
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Web Designer</h3>
+                        <p>Creating visually stunning and user-friendly website designs that leave a lasting impression. From wireframes to fully polished UI, I craft experiences that look great and feel intuitive.</p>
+                    </div>
+                    <div class="service-number">01</div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Mobile App Designer</h3>
+                        <p>Designing clean and modern mobile app interfaces for both iOS and Android. I focus on smooth user flows, consistent visual language, and engaging experiences tailored for mobile users.</p>
+                    </div>
+                    <div class="service-number">02</div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Frontend Web Development</h3>
+                        <p>Building responsive and performant websites using HTML, CSS, JavaScript, and modern frameworks. I turn designs into fully functional web experiences that work across all devices and browsers.</p>
+                    </div>
+                    <div class="service-number">03</div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Video Editing</h3>
+                        <p>Professional video editing for content creators, brands, and personal projects. From cuts and transitions to color grading and motion graphics, I bring your footage to life.</p>
+                    </div>
+                    <div class="service-number">04</div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Search Engine Optimizing</h3>
+                        <p>Improving your website's visibility on search engines through on-page SEO, keyword research, performance optimization, and best practices that drive organic traffic to your site.</p>
+                    </div>
+                    <div class="service-number">05</div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-brands fa-wordpress"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>WordPress</h3>
+                        <p>Building and customizing WordPress websites from scratch. Whether it's a blog, portfolio, or business site, I create fast, secure, and easy-to-manage WordPress solutions tailored to your needs.</p>
+                    </div>
+                    <div class="service-number">06</div>
+                </div>
+
+            </div>
+        </section>
+
+        <button id="theme-toggle" title="Toggle Light/Dark Mode">
+            <i class="fa-solid fa-sun"></i>
+        </button>
+    </div>
+
+    <script>
+        const pageWrapper = document.querySelector('.page-wrapper');
+
+        const canvas = document.getElementById('aurora-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        let auroraTime = 0;
+
+        function drawAurora() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isLight = document.body.classList.contains('light-mode');
+
+            const darkWaves = [
+                { y: 0.35, color: '#5227FF', speed: 0.00001, amp: 120, freq: 0.0018 },
+                { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
+                { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
+                { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
+            ];
+
+            const lightWaves = [
+                { y: 0.35, color: '#888888', speed: 0.00001, amp: 120, freq: 0.0018 },
+                { y: 0.45, color: '#aaaaaa', speed: 0.00001, amp: 100, freq: 0.0022 },
+                { y: 0.40, color: '#666666', speed: 0.00001, amp: 140, freq: 0.0015 },
+                { y: 0.50, color: '#999999', speed: 0.00001, amp: 90,  freq: 0.0020 },
+            ];
+
+            const waves = isLight ? lightWaves : darkWaves;
+
+            waves.forEach(wave => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'transparent');
+                gradient.addColorStop(0.3, wave.color + '55');
+                gradient.addColorStop(0.6, wave.color + '22');
+                gradient.addColorStop(1, 'transparent');
+
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height);
+
+                for (let x = 0; x <= canvas.width; x += 5) {
+                    const y = wave.y * canvas.height
+                        + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
+                        + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.closePath();
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            });
+
+            auroraTime++;
+            requestAnimationFrame(drawAurora);
+        }
+
+        drawAurora();
+
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Light/Dark mode toggle
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Load saved theme on page load
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || !href) return;
+                e.preventDefault();
+                pageWrapper.classList.add('slide-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

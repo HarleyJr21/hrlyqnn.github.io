@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+    <title>About - HrlyQnn</title>
+</head>
+<body>
+    <canvas id="aurora-canvas"></canvas>
+
+    <header>
+        <a href="index.html" class="logo">Harley</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="resume.html">Resume</a>
+            <a href="services.html">Projects</a>
+            <a href="#">Experience</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="about">
+        <div class="about-content">
+            <h2>About <span>Me</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus labore
+            dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi
+            in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque
+            asperiores ea.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            voluptates, quod, quia, voluptatem quae voluptatum quas natus
+            exercitationem reprehenderit cumque reiciendis.</p>
+            <div class="about-info">
+                <div class="info-box">
+                    <h3>Name</h3>
+                    <p>Harley</p>
+                </div>
+                <div class="info-box">
+                    <h3>Email</h3>
+                    <p>harley@email.com</p>
+                </div>
+                <div class="info-box">
+                    <h3>Location</h3>
+                    <p>Philippines</p>
+                </div>
+                <div class="info-box">
+                    <h3>Availability</h3>
+                    <p>Open to Work</p>
+                </div>
+            </div>
+            <a href="#" class="btn">Download CV</a>
+        </div>
+    </section>
+
+    <button id="theme-toggle" title="Toggle Light/Dark Mode">
+        <i class="fa-solid fa-sun"></i>
+    </button>
+
+    <script>
+        const canvas = document.getElementById('aurora-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        let auroraTime = 0;
+
+        function drawAurora() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isLight = document.body.classList.contains('light-mode');
+
+            const darkWaves = [
+                { y: 0.35, color: '#5227FF', speed: 0.00001, amp: 120, freq: 0.0018 },
+                { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
+                { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
+                { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
+            ];
+
+            const lightWaves = [
+                { y: 0.35, color: '#888888', speed: 0.00001, amp: 120, freq: 0.0018 },
+                { y: 0.45, color: '#aaaaaa', speed: 0.00001, amp: 100, freq: 0.0022 },
+                { y: 0.40, color: '#666666', speed: 0.00001, amp: 140, freq: 0.0015 },
+                { y: 0.50, color: '#999999', speed: 0.00001, amp: 90,  freq: 0.0020 },
+            ];
+
+            const waves = isLight ? lightWaves : darkWaves;
+
+            waves.forEach(wave => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'transparent');
+                gradient.addColorStop(0.3, wave.color + '55');
+                gradient.addColorStop(0.6, wave.color + '22');
+                gradient.addColorStop(1, 'transparent');
+
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height);
+
+                for (let x = 0; x <= canvas.width; x += 5) {
+                    const y = wave.y * canvas.height
+                        + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
+                        + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.closePath();
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            });
+
+            auroraTime++;
+            requestAnimationFrame(drawAurora);
+        }
+
+        drawAurora();
+
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Light/Dark mode toggle
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Load saved theme on page load
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -37,10 +37,6 @@ section, header, #theme-toggle {
     z-index: 1;
 }
 
-body.light-mode #aurora-canvas {
-    opacity: 0;
-}
-
 header {
     margin-top: 20px;
     position: fixed;
@@ -356,7 +352,7 @@ body.light-mode header.scrolled {
 }
 
 body.light-mode .home {
-    background-color: white;
+    background-color: transparent;
 }
 
 body.light-mode .logo {
