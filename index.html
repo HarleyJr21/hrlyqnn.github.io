@@ -1,130 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="resume.css">
     <title>HrlyQnn</title>
 </head>
 <body>
-    <canvas id="aurora-canvas"></canvas>
+    <div class="page-wrapper">
+        <canvas id="aurora-canvas"></canvas>
 
-    <header>
-        <a href="#" class="logo">Harley</a>
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="about.html">About</a>
-            <a href="resume.html">Resume</a>
-            <a href="services.html">Projects</a>
-            <a href="#">Experience</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+        <header>
+            <a href="#home" class="logo">Harley</a>
+            <nav>
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#resume">Resume</a>
+                <a href="#services">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
 
-    <section class="home">
-        <div class="home-img">
-            <img src="main.jpg" id="profile-pic">
-            <div class="tech-icons">
-                <a href="#" title="HTML5"><i class="fa-brands fa-html5"></i></a>
-                <a href="#" title="CSS3"><i class="fa-brands fa-css3-alt"></i></a>
-                <a href="#" title="JavaScript"><i class="fa-brands fa-js"></i></a>
-                <a href="#" title="PHP"><i class="fa-brands fa-php"></i></a>
-                <a href="#" title="Figma"><i class="fa-brands fa-figma"></i></a>
-                <a href="#" title="WordPress"><i class="fa-brands fa-wordpress"></i></a>
-                <a href="#" title="Adobe Premiere Pro"><span class="icon-text">Pr</span></a>
-                <a href="#" title="Stitch"><span class="icon-text">St</span></a>
-                <a href="#" title="MyRealPage"><span class="icon-text">MRP</span></a>
+        <!-- HOME -->
+        <section class="home" id="home">
+            <div class="home-img">
+                <div class="orbit-wrapper">
+                    <img src="main.jpg" id="profile-pic">
+                    <div class="orbit-ring">
+                        <span class="orbit-icon" style="--i:0">
+                            <a href="#" title="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:1">
+                            <a href="#" title="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:2">
+                            <a href="#" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:3">
+                            <a href="#" title="PHP"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:4">
+                            <a href="#" title="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:5">
+                            <a href="#" title="WordPress"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:6">
+                            <a href="#" title="Adobe Premiere Pro"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg"></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:7">
+                            <a href="#" title="Stitch"><span class="icon-text large-text">St</span></a>
+                        </span>
+                        <span class="orbit-icon" style="--i:8">
+                            <a href="#" title="MyRealPage"><span class="icon-text large-text">MRP</span></a>
+                        </span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>Harley</span></h1>
-            <h3 class="typing-text"><span id="im-a">I'm a </span><span></span></h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <div class="home-content">
+                <h1>Hi, It's <span>Harley</span></h1>
+                <h3 class="typing-text"><span id="im-a">I'm a </span><span></span></h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <a href="#contact" class="btn">Hire me</a>
             </div>
-            <a href="#" class="btn">Hire me</a>
-        </div>
-    </section>
+        </section>
 
-    <button id="theme-toggle" title="Toggle Light/Dark Mode">
-        <i class="fa-solid fa-sun"></i>
-    </button>
+        <!-- ABOUT -->
+        <section class="about" id="about">
+            <div class="about-content">
+                <h2>About <span>Me</span></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus labore
+                dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi
+                in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque
+                asperiores ea.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptates, quod, quia, voluptatem quae voluptatum quas natus
+                exercitationem reprehenderit cumque reiciendis.</p>
+                <div class="about-info">
+                    <div class="info-box">
+                        <h3>Name</h3>
+                        <p>Harley</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Email</h3>
+                        <p>harley@email.com</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Location</h3>
+                        <p>Philippines</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Availability</h3>
+                        <p>Open to Work</p>
+                    </div>
+                </div>
+                <a href="#" class="btn">Download CV</a>
+            </div>
+        </section>
+
+        <!-- RESUME -->
+        <section class="resume" id="resume">
+            <h2 class="resume-title">My <span>Resume</span></h2>
+            <p class="resume-subtitle">My background and qualifications</p>
+
+            <div class="resume-container">
+                <div class="resume-column">
+                    <div class="resume-section">
+                        <h3 class="section-heading">
+                            <i class="fa-solid fa-graduation-cap"></i> Education
+                        </h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2016 — 2020</span>
+                                    <h4>Computer System Servicing (CSS)</h4>
+                                    <p class="timeline-place">Liloan National Technical Vocational High School — Liloan, Southern Leyte</p>
+                                    <p>Junior High School — Focused on computer hardware servicing, networking, and technical vocational skills.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2020 — 2022</span>
+                                    <h4>Academic Track — Humanities and Social Sciences (HUMSS)</h4>
+                                    <p class="timeline-place">Liloan National Technical Vocational High School — Liloan, Southern Leyte</p>
+                                    <p>Senior High School — Developed critical thinking, communication, and social science competencies.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2022 — Present</span>
+                                    <h4>Bachelor of Science in Information Technology — Major in Programming (BSIT)</h4>
+                                    <p class="timeline-place">Southern Leyte State University - Main Campus (SLSU-MC) — Sogod, Southern Leyte</p>
+                                    <p>Currently pursuing a degree focused on software development, web technologies, and programming fundamentals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3 class="section-heading">
+                            <i class="fa-solid fa-certificate"></i> Certifications
+                        </h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2023</span>
+                                    <h4>Responsive Web Design</h4>
+                                    <p class="timeline-place">freeCodeCamp</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2022</span>
+                                    <h4>JavaScript Algorithms and Data Structures</h4>
+                                    <p class="timeline-place">freeCodeCamp</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-column">
+                    <div class="resume-section">
+                        <h3 class="section-heading">
+                            <i class="fa-solid fa-briefcase"></i> Experience
+                        </h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2023 — Present</span>
+                                    <h4>Freelance Web Developer</h4>
+                                    <p class="timeline-place">Self-employed</p>
+                                    <p>Building websites and web apps for local and international clients. Specializing in responsive design, WordPress, and frontend development.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2022 — 2023</span>
+                                    <h4>Junior Frontend Developer</h4>
+                                    <p class="timeline-place">Company Name, Philippines</p>
+                                    <p>Developed and maintained responsive web interfaces using HTML, CSS, and JavaScript.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2021 — 2022</span>
+                                    <h4>Video Editor</h4>
+                                    <p class="timeline-place">Freelance</p>
+                                    <p>Edited promotional videos, vlogs, and social media content using Adobe Premiere Pro.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3 class="section-heading">
+                            <i class="fa-solid fa-bars-progress"></i> Skills
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-header"><span>HTML & CSS</span><span>95%</span></div>
+                                <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header"><span>JavaScript</span><span>80%</span></div>
+                                <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header"><span>PHP</span><span>70%</span></div>
+                                <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header"><span>Figma & UI Design</span><span>85%</span></div>
+                                <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header"><span>WordPress</span><span>90%</span></div>
+                                <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header"><span>Video Editing</span><span>88%</span></div>
+                                <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-download">
+                <a href="#" class="btn"><i class="fa-solid fa-download"></i> &nbsp; Download CV</a>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services" id="services">
+            <h2 class="services-title">My <span>Services</span></h2>
+            <p class="services-subtitle">What I can do for you</p>
+
+            <div class="services-list">
+                <div class="service-box">
+                    <div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <div class="service-info">
+                        <h3>Web Designer</h3>
+                        <p>Creating visually stunning and user-friendly website designs that leave a lasting impression. From wireframes to fully polished UI, I craft experiences that look great and feel intuitive.</p>
+                    </div>
+                    <div class="service-number">01</div>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div class="service-info">
+                        <h3>Mobile App Designer</h3>
+                        <p>Designing clean and modern mobile app interfaces for both iOS and Android. I focus on smooth user flows, consistent visual language, and engaging experiences tailored for mobile users.</p>
+                    </div>
+                    <div class="service-number">02</div>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                    <div class="service-info">
+                        <h3>Frontend Web Development</h3>
+                        <p>Building responsive and performant websites using HTML, CSS, JavaScript, and modern frameworks. I turn designs into fully functional web experiences that work across all devices.</p>
+                    </div>
+                    <div class="service-number">03</div>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon"><i class="fa-solid fa-film"></i></div>
+                    <div class="service-info">
+                        <h3>Video Editing</h3>
+                        <p>Professional video editing for content creators, brands, and personal projects. From cuts and transitions to color grading and motion graphics, I bring your footage to life.</p>
+                    </div>
+                    <div class="service-number">04</div>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="service-info">
+                        <h3>Search Engine Optimizing</h3>
+                        <p>Improving your website's visibility on search engines through on-page SEO, keyword research, performance optimization, and best practices that drive organic traffic.</p>
+                    </div>
+                    <div class="service-number">05</div>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon"><i class="fa-brands fa-wordpress"></i></div>
+                    <div class="service-info">
+                        <h3>WordPress</h3>
+                        <p>Building and customizing WordPress websites from scratch. Whether it's a blog, portfolio, or business site, I create fast, secure, and easy-to-manage WordPress solutions.</p>
+                    </div>
+                    <div class="service-number">06</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="experience" id="experience">
+            <h2 class="experience-title">My <span>Experience</span></h2>
+            <p class="experience-subtitle">Where I've worked and what I've done</p>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact" id="contact">
+            <h2 class="contact-title">Contact <span>Me</span></h2>
+            <p class="contact-subtitle">Let's work together</p>
+        </section>
+
+        <button id="theme-toggle" title="Toggle Light/Dark Mode">
+            <i class="fa-solid fa-sun"></i>
+        </button>
+    </div>
 
     <script>
-        // Aurora background
+        const pageWrapper = document.querySelector('.page-wrapper');
+
+        // Aurora + Stars
         const canvas = document.getElementById('aurora-canvas');
         const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const stars = [];
+        for (let i = 0; i < 150; i++) {
+            stars.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight * 0.7,
+                radius: Math.random() * 1.5 + 0.3,
+                opacity: Math.random(),
+                twinkleSpeed: Math.random() * 0.02 + 0.005,
+                twinkleDirection: Math.random() > 0.5 ? 1 : -1
+            });
+        }
 
-        window.addEventListener('resize', () => {
+        function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        });
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            stars.forEach(star => {
+                star.x = Math.random() * window.innerWidth;
+                star.y = Math.random() * window.innerHeight * 0.7;
+            });
+        }
 
-        const waves = [
-            { y: 0.35, color: '#5227FF', speed: 0.00001, amp: 120, freq: 0.0018 },
-            { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
-            { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
-            { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
-        ];
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         let auroraTime = 0;
 
         function drawAurora() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isLight = document.body.classList.contains('light-mode');
 
-    const isLight = document.body.classList.contains('light-mode');
+            if (!isLight) {
+                stars.forEach(star => {
+                    star.opacity += star.twinkleSpeed * star.twinkleDirection;
+                    if (star.opacity >= 1) { star.opacity = 1; star.twinkleDirection = -1; }
+                    else if (star.opacity <= 0.1) { star.opacity = 0.1; star.twinkleDirection = 1; }
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                    ctx.shadowBlur = 6;
+                    ctx.shadowColor = 'white';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                });
+            }
 
-    const darkWaves = [
-        { y: 0.35, color: '#5227FF', speed: 0.00001,  amp: 120, freq: 0.0018 },
-        { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
-        { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
-        { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
-    ];
+            const darkWaves = [
+                { y: 0.35, color: '#5227FF', speed: 0.00001, amp: 120, freq: 0.0018 },
+                { y: 0.45, color: '#7cff67', speed: 0.00001, amp: 100, freq: 0.0022 },
+                { y: 0.40, color: '#00cfff', speed: 0.00001, amp: 140, freq: 0.0015 },
+                { y: 0.50, color: '#a855f7', speed: 0.00001, amp: 90,  freq: 0.0020 },
+            ];
 
-    const lightWaves = [
-        { y: 0.35, color: '#888888', speed: 0.00001,  amp: 120, freq: 0.0018 },
-        { y: 0.45, color: '#aaaaaa', speed: 0.00001, amp: 100, freq: 0.0022 },
-        { y: 0.40, color: '#666666', speed: 0.00001, amp: 140, freq: 0.0015 },
-        { y: 0.50, color: '#999999', speed: 0.00001, amp: 90,  freq: 0.0020 },
-    ];
+            const lightWaves = [
+                { y: 0.35, color: '#888888', speed: 0.00001, amp: 120, freq: 0.0018 },
+                { y: 0.45, color: '#aaaaaa', speed: 0.00001, amp: 100, freq: 0.0022 },
+                { y: 0.40, color: '#666666', speed: 0.00001, amp: 140, freq: 0.0015 },
+                { y: 0.50, color: '#999999', speed: 0.00001, amp: 90,  freq: 0.0020 },
+            ];
 
-    const waves = isLight ? lightWaves : darkWaves;
+            const waves = isLight ? lightWaves : darkWaves;
 
-    waves.forEach(wave => {
-        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        gradient.addColorStop(0, 'transparent');
-        gradient.addColorStop(0.3, wave.color + '55');
-        gradient.addColorStop(0.6, wave.color + '22');
-        gradient.addColorStop(1, 'transparent');
+            waves.forEach(wave => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'transparent');
+                gradient.addColorStop(0.3, wave.color + '55');
+                gradient.addColorStop(0.6, wave.color + '22');
+                gradient.addColorStop(1, 'transparent');
 
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height);
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height);
 
-        for (let x = 0; x <= canvas.width; x += 5) {
-            const y = wave.y * canvas.height
-                + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
-                + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
-            ctx.lineTo(x, y);
+                for (let x = 0; x <= canvas.width; x += 5) {
+                    const y = wave.y * canvas.height
+                        + Math.sin(x * wave.freq + auroraTime * wave.speed * 1000) * wave.amp
+                        + Math.sin(x * wave.freq * 0.5 + auroraTime * wave.speed * 600) * (wave.amp * 0.5);
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.closePath();
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            });
+
+            auroraTime++;
+            requestAnimationFrame(drawAurora);
         }
-
-        ctx.lineTo(canvas.width, canvas.height);
-        ctx.closePath();
-        ctx.fillStyle = gradient;
-        ctx.fill();
-    });
-
-    auroraTime++;
-    requestAnimationFrame(drawAurora);
-}
 
         drawAurora();
 
@@ -158,21 +455,54 @@
             typeTimeout = setTimeout(type, 400);
         });
 
-        // Navbar scroll
+        // Navbar scroll highlight
         const header = document.querySelector('header');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 50);
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (!href.startsWith('#')) return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
 
         // Light/Dark mode toggle
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = themeToggle.querySelector('i');
 
-        // Load saved theme on page load
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light-mode');
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
 
         themeToggle.addEventListener('click', () => {
@@ -191,9 +521,7 @@
         // Typewriter effect
         function type() {
             if (isPaused) return;
-
             const currentWord = words[wordIndex];
-
             if (isDeleting) {
                 typingSpan.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
@@ -201,9 +529,7 @@
                 typingSpan.textContent = currentWord.substring(0, charIndex + 1);
                 charIndex++;
             }
-
             let speed = isDeleting ? 80 : 120;
-
             if (!isDeleting && charIndex === currentWord.length) {
                 speed = 2500;
                 isDeleting = true;
@@ -212,13 +538,10 @@
                 wordIndex = (wordIndex + 1) % words.length;
                 speed = 400;
             }
-
             typeTimeout = setTimeout(type, speed);
         }
 
         type();
-
-        
     </script>
 </body>
 </html>

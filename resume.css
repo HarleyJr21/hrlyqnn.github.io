@@ -225,3 +225,11 @@ body.light-mode .skill-fill {
         font-size: 3.5rem;
     }
 }
+
+body.light-mode .timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .info-box:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}

@@ -185,3 +185,11 @@ body.light-mode .service-box:hover .service-number {
         font-size: 3.5rem;
     }
 }
+
+body.light-mode .service-box:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .service-box:hover .service-icon {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
