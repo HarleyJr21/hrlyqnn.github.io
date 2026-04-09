@@ -252,6 +252,17 @@
                 }, 500);
             });
         });
+
+        // Cursor spotlight on service boxes
+        document.querySelectorAll('.service-box').forEach(box => {
+            box.addEventListener('mousemove', e => {
+                const rect = box.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                box.style.setProperty('--x', x + '%');
+                box.style.setProperty('--y', y + '%');
+            });
+        });
     </script>
 </body>
 </html>

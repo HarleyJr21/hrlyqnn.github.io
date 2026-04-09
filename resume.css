@@ -1,7 +1,7 @@
 .resume {
     min-height: 100vh;
     padding: 12rem 9% 5rem;
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .resume-title {
@@ -12,17 +12,11 @@
     color: white;
 }
 
-body.light-mode .resume-title {
-    color: black;
-}
+body.light-mode .resume-title { color: black; }
 
-.resume-title span {
-    color: #eeff00;
-}
+.resume-title span { color: #eeff00; }
 
-body.light-mode .resume-title span {
-    color: black;
-}
+body.light-mode .resume-title span { color: black; }
 
 .resume-subtitle {
     font-size: 1.6rem;
@@ -31,9 +25,7 @@ body.light-mode .resume-title span {
     margin-bottom: 6rem;
 }
 
-body.light-mode .resume-subtitle {
-    color: rgba(0, 0, 0, 0.5);
-}
+body.light-mode .resume-subtitle { color: rgba(0, 0, 0, 0.5); }
 
 .resume-container {
     display: grid;
@@ -43,9 +35,7 @@ body.light-mode .resume-subtitle {
     margin: 0 auto;
 }
 
-.resume-section {
-    margin-bottom: 5rem;
-}
+.resume-section { margin-bottom: 5rem; }
 
 .section-heading {
     font-size: 2.2rem;
@@ -64,7 +54,6 @@ body.light-mode .section-heading {
     border-bottom-color: rgba(0, 0, 0, 0.2);
 }
 
-/* Timeline */
 .timeline {
     position: relative;
     padding-left: 2.5rem;
@@ -113,6 +102,10 @@ body.light-mode .timeline-dot {
     box-shadow: 0 0 20px #eeff00;
 }
 
+body.light-mode .timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
 .timeline-date {
     font-size: 1.3rem;
     color: #eeff00;
@@ -136,9 +129,7 @@ body.light-mode .timeline-date {
     margin-bottom: 0.4rem;
 }
 
-body.light-mode .timeline-content h4 {
-    color: black;
-}
+body.light-mode .timeline-content h4 { color: black; }
 
 .timeline-place {
     font-size: 1.3rem;
@@ -147,9 +138,7 @@ body.light-mode .timeline-content h4 {
     font-style: italic;
 }
 
-body.light-mode .timeline-place {
-    color: rgba(0, 0, 0, 0.45);
-}
+body.light-mode .timeline-place { color: rgba(0, 0, 0, 0.45); }
 
 .timeline-content p {
     font-size: 1.45rem;
@@ -157,11 +146,8 @@ body.light-mode .timeline-place {
     line-height: 1.8;
 }
 
-body.light-mode .timeline-content p {
-    color: rgba(0, 0, 0, 0.65);
-}
+body.light-mode .timeline-content p { color: rgba(0, 0, 0, 0.65); }
 
-/* Skills */
 .skills-list {
     display: flex;
     flex-direction: column;
@@ -177,9 +163,7 @@ body.light-mode .timeline-content p {
     margin-bottom: 0.8rem;
 }
 
-body.light-mode .skill-header {
-    color: black;
-}
+body.light-mode .skill-header { color: black; }
 
 .skill-bar {
     width: 100%;
@@ -189,15 +173,12 @@ body.light-mode .skill-header {
     overflow: hidden;
 }
 
-body.light-mode .skill-bar {
-    background-color: rgba(0, 0, 0, 0.1);
-}
+body.light-mode .skill-bar { background-color: rgba(0, 0, 0, 0.1); }
 
 .skill-fill {
     height: 100%;
     background: linear-gradient(to right, #eeff00, #aacc00);
     border-radius: 4px;
-    width: 0;
     transition: width 1.5s ease;
 }
 
@@ -205,31 +186,13 @@ body.light-mode .skill-fill {
     background: linear-gradient(to right, #333, #000);
 }
 
-/* Download button */
 .resume-download {
     text-align: center;
     margin-top: 4rem;
 }
 
 @media(max-width: 995px) {
-    .resume {
-        padding: 12rem 4rem 5rem;
-    }
-
-    .resume-container {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .resume-title {
-        font-size: 3.5rem;
-    }
-}
-
-body.light-mode .timeline-item:hover .timeline-dot {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
-
-body.light-mode .info-box:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    .resume { padding: 12rem 4rem 5rem; }
+    .resume-container { grid-template-columns: 1fr; gap: 0; }
+    .resume-title { font-size: 3.5rem; }
 }

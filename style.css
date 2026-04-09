@@ -16,7 +16,7 @@ html {
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     background-color: black;
     color: white;
@@ -32,13 +32,44 @@ body {
     pointer-events: none;
 }
 
-section, header, #theme-toggle {
+section,
+header,
+#theme-toggle {
     position: relative;
     z-index: 1;
 }
 
+section {
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+    background-color: transparent !important;
+}
+
+.home,
+.about,
+.resume,
+.services,
+.experience,
+.contact {
+    background-color: transparent !important;
+}
+
+body.light-mode {
+    background-color: white;
+    background-image: none;
+    color: black;
+}
+
+body.light-mode .home,
+body.light-mode .about,
+body.light-mode .resume,
+body.light-mode .services,
+body.light-mode .experience,
+body.light-mode .contact {
+    background-color: transparent !important;
+}
+
 header {
-    margin-top: 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -144,17 +175,11 @@ body.light-mode nav a.active {
     }
 }
 
-section {
-    min-height: 100vh;
-    padding: 5rem 9% 5rem;
-}
-
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8rem;
-    background-color: transparent;
 }
 
 .home .home-content h1 {
@@ -273,41 +298,49 @@ body.light-mode .orbit-ring {
     transform: scale(1.3);
 }
 
-.orbit-icon a .icon-text {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #eeff00;
-}
-
-body.light-mode .orbit-icon a {
-    background-color: transparent;
-    border: none;
-}
-
-body.light-mode .orbit-icon a .icon-text {
-    color: black;
+.orbit-icon a:has(.icon-text) {
+    width: auto;
+    height: auto;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
 }
 
 .icon-text {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: #eeff00;
-    letter-spacing: -0.05rem;
+    letter-spacing: -0.02rem;
     line-height: 1;
+    white-space: nowrap;
 }
 
 body.light-mode .icon-text {
     color: black;
 }
 
+.large-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
 @keyframes orbit-spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 @keyframes counter-orbit {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(-360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
 }
 
 .social-icons a {
@@ -370,8 +403,15 @@ body.light-mode .icon-text {
 }
 
 @keyframes cursor {
-    0%, 100% { border-color: #eeff00; }
-    50% { border-color: transparent; }
+
+    0%,
+    100% {
+        border-color: #eeff00;
+    }
+
+    50% {
+        border-color: transparent;
+    }
 }
 
 @media(max-width: 1000px) {
@@ -434,6 +474,7 @@ header.scrolled {
         opacity: 0;
         transform: translateX(100px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -449,13 +490,14 @@ header.scrolled {
         opacity: 1;
         transform: translateX(0);
     }
+
     to {
         opacity: 0;
         transform: translateX(-100px);
     }
 }
 
-/* Dark mode button — yellow circle, black sun */
+/* Dark mode button */
 #theme-toggle {
     position: fixed;
     bottom: 2rem;
@@ -463,12 +505,13 @@ header.scrolled {
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
-    background-color: #eeff00;
-    color: black;
+    background-color: black;
+    color: white;
+    border: 1.5px solid white;
     font-size: 2rem;
     cursor: pointer;
     z-index: 999;
-    box-shadow: 0 0 15px rgba(238, 255, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     transition: 0.3s ease;
     display: flex;
     justify-content: center;
@@ -476,19 +519,12 @@ header.scrolled {
 }
 
 #theme-toggle i {
-    color: black;
+    color: white;
 }
 
 #theme-toggle:hover {
     transform: scale(1.15);
-    box-shadow: 0 0 25px rgba(238, 255, 0, 0.8);
-}
-
-/* Light mode overrides */
-body.light-mode {
-    background-color: white;
-    background-image: none;
-    color: black;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
 }
 
 body.light-mode header {
@@ -498,10 +534,6 @@ body.light-mode header {
 body.light-mode header.scrolled {
     background-color: rgba(255, 255, 255, 0.7);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .home {
-    background-color: transparent;
 }
 
 body.light-mode .logo {
@@ -523,8 +555,15 @@ body.light-mode .typing-text span:last-child {
 }
 
 @keyframes cursor-light {
-    0%, 100% { border-color: black; }
-    50% { border-color: transparent; }
+
+    0%,
+    100% {
+        border-color: black;
+    }
+
+    50% {
+        border-color: transparent;
+    }
 }
 
 body.light-mode .social-icons a {
@@ -550,57 +589,33 @@ body.light-mode .btn:hover {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
-/* Light mode button — black circle, white moon */
 body.light-mode #theme-toggle {
-    background-color: black;
-    color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    background-color: #eeff00;
+    color: black;
+    border: 1.5px solid black;
+    box-shadow: 0 0 15px rgba(238, 255, 0, 0.5);
 }
 
 body.light-mode #theme-toggle i {
-    color: white;
-}
-
-body.light-mode #theme-toggle:hover {
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-}
-
-.large-text {
-    font-size: 5.0rem;
-    font-weight: 2000;
-}
-
-.orbit-icon a:has(.icon-text) {
-    width: auto;
-    height: auto;
-    min-width: 3.5rem;
-    min-height: 3.5rem;
-}
-
-.icon-text {
-    font-size: 5.6rem;
-    font-weight: 800;
-    color: #eeff00;
-    letter-spacing: -0.02rem;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-body.light-mode .icon-text {
     color: black;
 }
 
-.experience, .contact {
+body.light-mode #theme-toggle:hover {
+    box-shadow: 0 0 25px rgba(238, 255, 0, 0.8);
+}
+
+.experience,
+.contact {
     min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
     padding: 8rem 9%;
 }
 
-.experience-title, .contact-title {
+.experience-title,
+.contact-title {
     font-size: 5rem;
     font-weight: 700;
     color: white;
@@ -612,7 +627,8 @@ body.light-mode .contact-title {
     color: black;
 }
 
-.experience-subtitle, .contact-subtitle {
+.experience-subtitle,
+.contact-subtitle {
     font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.5);
 }
@@ -620,23 +636,4 @@ body.light-mode .contact-title {
 body.light-mode .experience-subtitle,
 body.light-mode .contact-subtitle {
     color: rgba(0, 0, 0, 0.5);
-}
-
-section {
-    min-height: 100vh;
-    padding: 5rem 9% 5rem;
-    background-color: transparent !important;
-}
-
-.home, .about, .resume, .services, .experience, .contact {
-    background-color: transparent !important;
-}
-
-body.light-mode .home,
-body.light-mode .about,
-body.light-mode .resume,
-body.light-mode .services,
-body.light-mode .experience,
-body.light-mode .contact {
-    background-color: transparent !important;
 }
